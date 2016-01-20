@@ -45,7 +45,7 @@ public class PartitionsProducer implements Runnable {
 		ExecutorService service = Executors.newFixedThreadPool(30);
 		LOG.info("I'm starting generate {} arrays of rundom strings [{}]", messages.length, LocalTime.now());
 		for (int i = 0; i < splitToPartitions; i++) {
-			service.execute(new RandomStringGenerator(messages, processedRange, rangePartition, availablePartitions));
+			service.execute(new RandomStringGenerator(messages, processedRange, rangePartition, availablePartitions));						
 		}
 		service.shutdown();
 		boolean done = false;

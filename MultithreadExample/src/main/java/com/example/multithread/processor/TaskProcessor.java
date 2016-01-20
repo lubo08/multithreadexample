@@ -11,7 +11,7 @@ import org.springframework.util.Assert;
  *
  */
 public class TaskProcessor implements Runnable {
-
+	
 	private String[] messages;
 	
 	private Integer processedRange;

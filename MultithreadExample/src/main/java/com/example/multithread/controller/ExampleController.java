@@ -26,7 +26,7 @@ public class ExampleController {
 
 	private String[] messages = new String[100000000];
 
-	private int splitToPartitions = 1000;
+	private int splitToPartitions = 100;
 
 	private int rangePartition = messages.length / splitToPartitions;
 	

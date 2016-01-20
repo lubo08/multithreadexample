@@ -55,6 +55,7 @@ public class PartitionsConsumer implements Runnable {
 			}
 			service.execute(new TaskProcessor(messages, processedPosition, rangePartition, resultCounter));
 			processedPartitions++;
+			LOG.info("will search partition {}", processedPosition);
 		}
 
 		service.shutdown();

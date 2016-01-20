@@ -38,13 +38,14 @@ public class RandomStringGenerator implements Runnable {
 		int currentPartition = processedRange.getAndIncrement();
 		int partitionCounter = currentPartition * rangePartition;
 		for (int i = 0; i < rangePartition; i++) {
-			messages[partitionCounter++] = messageDict[ThreadLocalRandom.current().nextInt(0, 4)];
+			messages[partitionCounter++] = messageDict[ThreadLocalRandom.current().nextInt(0, 4)];			
 		}
 		try {
-			availablePartitions.put(currentPartition);
+			LOG.info("Partition produced {}",currentPartition);
+			availablePartitions.put(currentPartition);			
 		} catch (InterruptedException e) {
 			LOG.error("Partition {} will not be searched",currentPartition,e);
-		}
+		}		
 	}
 
 }
