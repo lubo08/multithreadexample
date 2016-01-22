@@ -2,6 +2,8 @@ package com.example.multithread.processor;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 /**
@@ -11,6 +13,8 @@ import org.springframework.util.Assert;
  *
  */
 public class TaskProcessor implements Runnable {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(TaskProcessor.class);
 	
 	private String[] messages;
 	
@@ -39,11 +43,12 @@ public class TaskProcessor implements Runnable {
 		int positiveMatches = 0;
 		for (int i = 0; i < rangePartition; i++) {
 			if (messages[partitionCounter++].contains("car")) {
-				positiveMatches++;
+				positiveMatches++;				
 			}
 		}
 		if (positiveMatches > 0) {
 			resultCounter.addAndGet(positiveMatches);
+			LOG.info("Matched {}",positiveMatches);
 		}
 	}
 
